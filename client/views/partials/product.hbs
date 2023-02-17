@@ -1,0 +1,77 @@
+<div class='product is-flex is-flex-direction-column is-flex-grow-1'>
+    <h5 class='product-title title is-5'>{{name}}</h5>
+    <div
+        class='is-flex is-flex-grow-1 is-flex-direction-column-tablet is-justify-content-space-between-tablet'
+    >
+        <div class='is-flex-grow-0'>
+            <figure class='image-container'>
+                <img src={{imageURL}} alt='' aria-labelledby={{id}} />
+            </figure>
+
+        </div>
+        <div class='is-flex is-flex-grow-1 is-justify-content-start-tablet is-align-items-center'>
+            <div
+                class='is-flex h-100 is-flex-direction-column is-justify-content-center is-justify-content-space-between-tablet is-flex-grow-1'
+            >
+                <p
+                    id={{id}}
+                    class='product-desc content is-small my-2 has-text-weight-medium'
+                >
+                    {{description}}
+                </p>
+
+                <div
+                    class='is-flex is-align-items-center is-justify-content-space-between'
+                >
+                    <span role='text' class='content is-small mb-0'>MRP
+                       Rs. {{price}}
+                    </span>
+                
+                    <button
+                        type='button'
+                        data-id={{id}}
+                        class='button is-primary is-small buy-button {{#eq qty '0'}}{{else}}is-hidden{{/eq}}'
+                        aria-hidden="{{#eq qty '0'}}false{{else}}true{{/eq}}"
+                        tabindex="{{#eq qty '0'}}0{{else}}-1{{/eq}}"
+                        onclick="productMethods.onQtyBtnClick(event)"
+                    >
+                        Buy Now
+                    </button>
+                    <div class="cart-item {{#eq qty '0'}}is-hidden{{/eq}}" aria-hidden='{{#eq qty '0'}}true{{else}}false{{/eq}}'>
+                        <form
+                            data-id={{id}}
+                            class='mb-0 is-flex is-align-items-center'
+                            onsubmit='return false;'
+                        >
+                            <button
+                                data-id={{id}}
+                                class='qtyminus button is-primary is-small mr-1'
+                                onclick="productMethods.onQtyBtnClick(event)"
+                            >&minus;</button>
+                            <input
+                                type='number'
+                                name={{id}}
+                                data-id={{id}}
+                                aria-label="Enter Product Quantity"
+                                class='qty-input input is-primary is-small'
+                                min='0'
+                                max='10'
+                                step='1'
+                                data-qty={{qty}}
+                                value={{qty}}
+                                tabindex="-1"
+                                onkeydown="productMethods.onQtyKeyDown(event)"
+                                onblur="productMethods.onQtyInputBlur(event)"
+                            />
+                            <button
+                                data-id={{id}}
+                                class='qtyplus button is-primary is-small ml-1' 
+                                onclick="productMethods.onQtyBtnClick(event)"
+                            >&plus;</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,222 @@
+// Reset Variables
+$primary: #d00256;
+$link: $primary;
+$fullhd: 1550px;
+
+@import '~bulma/bulma';
+button:focus,
+button:active{
+    outline: 2px solid black!important;
+}
+html {
+    overflow-y: auto;
+}
+body {
+    min-height: 100vh;
+}
+.w-100{
+    width: 100%!important;
+}
+.h-100{
+    height: 100%;
+}
+.header-logo {
+    img {
+        width: 6em;
+        max-height: inherit;
+    }
+    @media screen and (min-width: 1025px) {
+        margin-right: 4em;
+        margin-right: 30px;
+        img {
+            width: 10em;
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+}
+a.link {
+    transition: all 0.33 ease;
+    margin: 0 5px;
+    &.is-active {
+        color: $primary;
+    }
+    &.is-active,
+    &:hover,
+    &:focus {
+        font-weight: 600;
+        border-bottom: 2px solid;
+    }
+}
+.is-flex-grow-1-mobile {
+    @extend .is-flex-grow-1;
+    @media screen and (min-width: $tablet) {
+        flex-grow: initial !important;
+    }
+}
+.cart-button {
+    svg {
+        color: $primary;
+    }
+}
+.button {
+    border-radius: 0 !important;
+}
+
+@media screen and (min-width: $tablet) {
+    .navbar-burger {
+        display: none;
+    }
+    .navbar-menu {
+        display: flex;
+        box-shadow: none;
+    }
+    .is-flex-direction-column-tablet {
+        flex-direction: column !important;
+    }
+    .is-justify-content-space-between-tablet {
+        justify-content: space-between !important;
+    }
+    .is-justify-content-start-tablet {
+        justify-content: flex-start !important;
+    }
+}
+
+.mini-cart {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    .close-cart-button{
+        border: 1px solid transparent;
+        &:hover{
+            color: $white;
+            border: 1px solid $white;
+        }
+    }
+    &__backdrop {
+        @extend .w-100;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+    }
+    &__header {
+        @extend .is-flex,
+            .is-align-items-center,
+            .p-1,
+            .is-flex-grow-0,
+            .is-flex-shrink-0;
+        background: rgb(29, 29, 29);
+        color: white;
+
+        h3 {
+            @extend .is-flex-grow-1;
+            font-weight: 600;
+        }
+        button {
+            @extend .is-flex-grow-0, .is-flex-shrink-0, .mb-0;
+            background-color: transparent;
+            color: white;
+            border: 0px;
+            font-weight: 600;
+        }
+    }
+    &__items-container {
+        @extend .is-flex-grow-1;
+        height: 88%;
+    }
+    &__body {
+        @extend .py-1;
+        & > div {
+            max-height: calc(100% - 60px);
+            overflow: auto;
+        }
+    }
+    &__footer {
+        @extend .p-1, .is-flex-grow-0, .is-flex-shrink-0;
+        button {
+            @extend .w-100;
+        }
+    }
+    &__wrapper {
+        position: fixed;
+        @extend .w-100;
+        right: 0;
+        height: 100%;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        bottom: 0;
+        @media screen and (min-width: $tablet) {
+            right: 30px;
+            width: 400px!important;
+            height: 80%;
+        }
+    }
+
+    &__item {
+        @extend .p-1;
+        @extend .w-100;
+        figure {
+            width: 70px;
+            height: 70px;
+            img {
+                object-fit: contain;
+                max-height: fit-content;
+            }
+        }
+        &-title {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+    }
+    &__button {
+        border-radius: 100% !important;
+        width: 25px;
+        height: 25px;
+        margin: 0;
+    }
+}
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    .menu-backdrop {
+        display: flex;
+        @extend .w-100;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    .menu-header {
+        @extend .is-flex,
+            .is-justify-content-space-between,
+            .is-align-items-center,
+            .mb-4,
+            .mt-2,
+            .p-1;
+        img {
+            width: 80px;
+            margin-left: 10px;
+        }
+        button {
+            border-radius: 100% !important;
+            width: 30px!important;
+            height: 30px;
+        }
+    }
+    .menu {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 200px;
+        left: 0px;
+        background-color: white;
+        .is-active {
+            color: white;
+            font-weight: 600;
+        }
+    }
+}
+.cat-dropdown {
+    &,
+    button,div {
+        @extend .w-100;
+    }
+}
